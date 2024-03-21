@@ -12,10 +12,10 @@ for numero in range(1, 5):  # Genera números del 1 al 99
     audio_wav = audio_mp3.export(nombre_archivoWav, format="wav")
 """
 
-mensaje = "cero"
+mensaje = "cero "
 speech = gTTS(mensaje, lang='es', tld='com.mx', slow=False)
-nombre_archivo = "0.mp3"
-nombre_archivoWav = "0.wav"
+nombre_archivo = "cero.mp3"
+nombre_archivoWav = "cero.wav"
 speech.save(nombre_archivo)
 audio_mp3 = AudioSegment.from_mp3(nombre_archivo)
 audio_wav = audio_mp3.export(nombre_archivoWav, format="wav")

@@ -16,6 +16,7 @@ namespace Scoreboard_with_voice
     {
         int mt1 = 0;
         int mt2 = 0;
+        bool modoDemo = false;
         string urlGit = "https://github.com/ACO-626/SCOREBOARD-WITH-VOICE";
         
 
@@ -39,7 +40,7 @@ namespace Scoreboard_with_voice
             if (validaAnotacionMax(mt1)){               
                 mt1++;
                 labelT1.Text = mt1.ToString();
-                reproducirVoz();             
+                reproducirVoz(true);             
             }
             
         }
@@ -62,7 +63,7 @@ namespace Scoreboard_with_voice
             {
                 mt2++;
                 labelT2.Text = mt2.ToString();
-                reproducirVoz();
+                reproducirVoz(false);
             }
         }
 
@@ -140,34 +141,90 @@ namespace Scoreboard_with_voice
 
 
 
-        private void reproducirVoz()
+        private void reproducirVoz(bool teamAnota)
         {
-            string rutaAno = "../../audios/marcador.wav";
+            string rutaAno = "../../audios/anotacion.wav";
+            string rutaMarcador = "../../audios/marcador.wav";
             string rutavalA = "../../audios/" + labelT1.Text + ".wav";
             string rutaA = "../../audios/a.wav";
             string rutavalB = "../../audios/" + labelT2.Text + ".wav";
+            string rutaFavor = "../../audios/favor.wav";
+            string rutaNameA = "../../audios/nameA.wav";
+            string rutaNameB = "../../audios/nameB.wav";
             
+
+
+
             try
             {
                 // Crear una instancia de SoundPlayer y cargar el archivo MP3
                 SoundPlayer anotacion = new SoundPlayer(rutaAno);
                 SoundPlayer marcador1 = new SoundPlayer(rutavalA);
                 SoundPlayer a = new SoundPlayer(rutaA);
-                SoundPlayer marcador2 = new SoundPlayer(rutavalB);              
+                SoundPlayer marcador2 = new SoundPlayer(rutavalB);
+                
+                //Demo part
+                SoundPlayer marcador = new SoundPlayer(rutaMarcador);
+                SoundPlayer favor = new SoundPlayer(rutaFavor);
+                SoundPlayer nameA = new SoundPlayer(rutaNameA);
+                SoundPlayer nameB = new SoundPlayer(rutaNameB);
+                
+
                 // Reproducir el archivo MP3
                 
                 anotacion.Play();
                 anotacion.PlaySync();
+               
+                if(teamAnota && modoDemo)
+                {
+                    nameA.Play();
+                    nameA.PlaySync();
+                }
+                else if(!teamAnota && modoDemo)
+                {
+                    nameB.Play();
+                    nameB.PlaySync();
+                }
+
+                marcador.Play();
+                marcador.PlaySync();
+
                 marcador1.Play();
                 marcador1.PlaySync();
                 a.Play(); 
                 a.PlaySync();
                 marcador2.Play();
                 marcador2.PlaySync();
+
+                if(modoDemo)
+                {
+                    int resultado = int.Parse(labelT1.Text) - int.Parse(labelT2.Text);
+                    if (resultado > 0)
+                    {
+                        favor.Play();
+                        favor.PlaySync();
+                        nameA.Play();
+                        nameA.PlaySync();
+                    }else if (resultado < 0)
+                    {
+                        favor.Play();
+                        favor.PlaySync();
+                        nameB.Play();
+                        nameB.PlaySync();
+                    }else if(resultado == 0)
+                    {
+
+                    }
+                }
+
+                nameA.Dispose();
+                nameB.Dispose();
+                marcador.Dispose();
                 anotacion.Dispose();
                 marcador1.Dispose();
                 a.Dispose();
                 marcador2.Dispose();
+                
             }
             catch (Exception ex)
             {
@@ -228,8 +285,21 @@ namespace Scoreboard_with_voice
         {
             Process.Start(urlGit);
         }
+
         #endregion
 
-
+        #region MODO DEMO NAMES
+        private void checkDemo_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (checkDemo.Checked) 
+            {
+                modoDemo = true;
+            }
+            else
+            {
+                modoDemo = false;
+            }
+        }
+        #endregion
     }
 }

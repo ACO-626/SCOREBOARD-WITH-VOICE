@@ -50,12 +50,13 @@
             this.contactoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.créditosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gitHubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.version001ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbSimpleA = new System.Windows.Forms.Label();
             this.lbSimpleB = new System.Windows.Forms.Label();
             this.lbNameT1 = new System.Windows.Forms.Label();
             this.lbNameT2 = new System.Windows.Forms.Label();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.version001ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkDemo = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -269,16 +270,27 @@
             // créditosToolStripMenuItem
             // 
             this.créditosToolStripMenuItem.Name = "créditosToolStripMenuItem";
-            this.créditosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.créditosToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.créditosToolStripMenuItem.Text = "Créditos";
             this.créditosToolStripMenuItem.Click += new System.EventHandler(this.créditosToolStripMenuItem_Click);
             // 
             // gitHubToolStripMenuItem
             // 
             this.gitHubToolStripMenuItem.Name = "gitHubToolStripMenuItem";
-            this.gitHubToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gitHubToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.gitHubToolStripMenuItem.Text = "GitHub";
             this.gitHubToolStripMenuItem.Click += new System.EventHandler(this.gitHubToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(136, 6);
+            // 
+            // version001ToolStripMenuItem
+            // 
+            this.version001ToolStripMenuItem.Name = "version001ToolStripMenuItem";
+            this.version001ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.version001ToolStripMenuItem.Text = "Version 0,0,1";
             // 
             // lbSimpleA
             // 
@@ -332,16 +344,17 @@
             this.lbNameT2.Text = "EQUIPO B";
             this.lbNameT2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // toolStripSeparator1
+            // checkDemo
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // version001ToolStripMenuItem
-            // 
-            this.version001ToolStripMenuItem.Name = "version001ToolStripMenuItem";
-            this.version001ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.version001ToolStripMenuItem.Text = "Version 0,0,1";
+            this.checkDemo.AutoSize = true;
+            this.checkDemo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.checkDemo.Location = new System.Drawing.Point(558, 460);
+            this.checkDemo.Name = "checkDemo";
+            this.checkDemo.Size = new System.Drawing.Size(151, 17);
+            this.checkDemo.TabIndex = 14;
+            this.checkDemo.Text = "MODO DEMO NOMBRES";
+            this.checkDemo.UseVisualStyleBackColor = true;
+            this.checkDemo.CheckStateChanged += new System.EventHandler(this.checkDemo_CheckStateChanged);
             // 
             // Form1
             // 
@@ -349,6 +362,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(28)))));
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.checkDemo);
             this.Controls.Add(this.lbNameT2);
             this.Controls.Add(this.lbNameT1);
             this.Controls.Add(this.lbSimpleB);
@@ -402,6 +416,7 @@
         private System.Windows.Forms.ToolStripMenuItem gitHubToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem version001ToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkDemo;
     }
 }
 
